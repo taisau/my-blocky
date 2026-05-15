@@ -6,6 +6,8 @@ upstreams:
 ports:
   dns: 53
   http: 4000
+bootstrapDns:
+  - 1.1.1.1
 blocking:
   denylists:
     ads:
