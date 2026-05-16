@@ -4,8 +4,8 @@ upstreams:
       - 1.1.1.1
       - 8.8.8.8
 ports:
-  dns: 0.0.0.0:53
-  http: 0.0.0.0:4000
+  dns: 53
+  http: 4000
 prometheus:
   enable: true
   path: /metrics
