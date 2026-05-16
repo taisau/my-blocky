@@ -6,6 +6,9 @@ upstreams:
 ports:
   dns: 0.0.0.0:53
   http: 0.0.0.0:4000
+prometheus:
+  enable: true
+  path: /metrics
 bootstrapDns:
   - 1.1.1.1
 blocking:
