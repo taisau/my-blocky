@@ -14,7 +14,7 @@ bootstrapDns:
 blocking:
   denylists:
     ads:
-      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+      - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/pro.txt
   clientGroupsBlock:
     default:
       - ads
