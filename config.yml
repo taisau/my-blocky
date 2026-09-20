@@ -1,8 +1,7 @@
 upstreams:
   groups:
     default:
-      - 1.1.1.1
-      - 8.8.8.8
+      - https://dns.nextdns.io/ca7d51/av
 ports:
   dns: 53
   http: 4000
@@ -14,10 +13,11 @@ bootstrapDns:
 blocking:
   denylists:
     ads:
-      - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/pro.txt
+      - https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro.txt
   clientGroupsBlock:
     default:
       - ads
 caching:
   minTime: 5m
   maxTime: 30m
+  prefetching: true
