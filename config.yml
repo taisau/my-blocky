@@ -1,3 +1,18 @@
+# Blocky is a CACHING DNS FORWARDER ONLY. It keeps no local blocklists.
+#
+# Ad/tracker blocking is done upstream by NextDNS (profile ca7d51), which
+# returns the 149.248.211.216 sinkhole. Verified 2026-10-03: ad domains resolve
+# to 149.248.211.216, not the 0.0.0.0 that blocky's own denylist would return.
+#
+# The HaGeZi Multi PRO denylist was removed because it was redundant *and*
+# wasteful: 4.8 MB re-downloaded every 4h (~29 MB/day, ~864 MB/month of Google
+# Fi data), plus it raced router boot so it was silently empty after every
+# reboot. Do not re-add blocking.denylists without reading
+# 11.56 Max BR1 Pro 5G/AGENTS.md.
+#
+# connectIPVersion: v4 - this container has no IPv6 route, so blocky's
+# IPv6-first dials failed with "cannot assign requested address" against both
+# the list URLs and the NextDNS upstream, burning the retry budget.
 upstreams:
   groups:
     default:
@@ -8,15 +23,9 @@ ports:
 prometheus:
   enable: true
   path: /metrics
+connectIPVersion: v4
 bootstrapDns:
   - 1.1.1.1
-blocking:
-  denylists:
-    ads:
-      - https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro.txt
-  clientGroupsBlock:
-    default:
-      - ads
 caching:
   minTime: 5m
   maxTime: 30m
